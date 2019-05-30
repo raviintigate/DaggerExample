@@ -15,8 +15,10 @@ import com.ravi.daggerexample.api.AuthApiHelper;
 import com.ravi.daggerexample.api.ContextModule;
 import com.ravi.daggerexample.component.ApiClientComponent;
 import com.ravi.daggerexample.component.DaggerApiClientComponent;
+import com.ravi.daggerexample.request.LoginRequest;
 import com.ravi.daggerexample.request.UserAuthenticationRequest;
 import com.ravi.daggerexample.response.LoginResponse;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,18 +53,12 @@ public class LoginActivity extends AppCompatActivity {
     private void loginFromServer(String mobileNumber, String password) {
         ApiClientComponent component = DaggerApiClientComponent.builder().contextModule(new ContextModule(this)).build();
         AuthApiHelper authApiHelper = component.getAuthApiHelper();
-
-        UserAuthenticationRequest request = new UserAuthenticationRequest();
-        String signature = "2ed0dfa8b024819f9467147f129b4ea182ae203e3295d715ce5240bdd7ae2301b3769fd2d923ed966de0898b77d8ce17d0e4d3b52763db01d153d3c54b2b6f6d";
-        String userAgent = "79d2ed463da5b266fe518944bada2efa";
-        request.setId("481352");
-        request.setPassword(password);
-        request.setPhoneNo(mobileNumber);
-        Call<LoginResponse> call = authApiHelper.UserAuthentication(request, "application/json", "1", userAgent, signature);
+        UserAuthenticationRequest request = LoginRequest.getLoginCredentials(mobileNumber, password);
+        Call<LoginResponse> call = authApiHelper.UserAuthentication(request, "application/json", "1", LoginRequest.userAgent, LoginRequest.signature);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Log.d(TAG, ""+response.body());
+                Log.d(TAG, "" + response.body());
                 LoginResponse loginResponse = (LoginResponse) response.body();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("data", loginResponse.toString());

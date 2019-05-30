@@ -11,4 +11,4 @@
 /build
 /captures
 .externalNativeBuild
-/app/src/main/java/com/ravi/daggerexample/Ignore.*
+/app/src/main/java/com/ravi/daggerexample/Ignore/*

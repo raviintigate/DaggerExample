@@ -15,7 +15,7 @@ import com.ravi.daggerexample.api.AuthApiHelper;
 import com.ravi.daggerexample.api.ContextModule;
 import com.ravi.daggerexample.component.ApiClientComponent;
 import com.ravi.daggerexample.component.DaggerApiClientComponent;
-import com.ravi.daggerexample.request.LoginRequest;
+import com.ravi.daggerexample.Ignore.LoginRequest;
 import com.ravi.daggerexample.request.UserAuthenticationRequest;
 import com.ravi.daggerexample.response.LoginResponse;
 

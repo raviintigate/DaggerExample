@@ -10,9 +10,8 @@ import dagger.Component;
 
 
 @Singleton
-@Component(modules = {RetroApiClient.class, PicassoModule.class})
+@Component(modules = RetroApiClient.class)
 public interface ApiClientComponent {
     AuthApiHelper getAuthApiHelper();
     GameAuthApiHelper getGameAuthApiHelper();
-    Picasso getPicasso();
 }

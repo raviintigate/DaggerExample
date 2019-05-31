@@ -12,6 +12,7 @@ public class OkHttpClientModule {
 
     @Provides
     public OkHttpClient getOkHttpClient(HttpLoggingInterceptor httpLoggingInterceptor) {
+
         return new OkHttpClient()
                 .newBuilder()
                 .addInterceptor(httpLoggingInterceptor)
@@ -19,6 +20,8 @@ public class OkHttpClientModule {
                 .readTimeout(15, TimeUnit.MINUTES)
                 .build();
     }
+
+
 
 
     @Provides

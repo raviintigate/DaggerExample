@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Picasso picassoLoader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getGameListFromServer() {
-        ApiClientComponent apiComponent = DaggerApiClientComponent.builder().contextModule(new ContextModule(this)).build();
-        picassoLoader = apiComponent.getPicasso();
-        AuthApiHelper authApiHelper = apiComponent.getAuthApiHelper();
+//        ApiClientComponent apiComponent = DaggerApiClientComponent.builder().build();
+//
+//        AuthApiHelper authApiHelper = apiComponent.getAuthApiHelper();
 
     }
 

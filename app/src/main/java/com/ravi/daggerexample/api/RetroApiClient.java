@@ -11,6 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module(includes = OkHttpClientModule.class)
@@ -31,9 +32,12 @@ public class RetroApiClient {
     @Singleton
     @Provides
     @Named("appBasicUrl")
-    public Retrofit retrofit(GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient, Gson gson) {
+    public Retrofit retrofit(GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient, Gson gson, RxJava2CallAdapterFactory rxJava2CallAdapterFactory) {
+
+
         return new Retrofit.Builder()
                 .client(okHttpClient)
+                .addCallAdapterFactory(rxJava2CallAdapterFactory)
                 .baseUrl(AppUrls.APP_BASE_URL)
                 .addConverterFactory(gsonConverterFactory)
                 .build();
@@ -42,10 +46,11 @@ public class RetroApiClient {
     @Singleton
     @Provides
     @Named("gameBasicUrl")
-    public Retrofit gameRetrofit(GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient, Gson gson) {
+    public Retrofit gameRetrofit(GsonConverterFactory gsonConverterFactory, OkHttpClient okHttpClient, Gson gson, RxJava2CallAdapterFactory rxJava2CallAdapterFactory) {
         return new Retrofit.Builder()
                 .client(okHttpClient)
                 .baseUrl(AppUrls.GAME_BASE_URL)
+                .addCallAdapterFactory(rxJava2CallAdapterFactory)
                 .addConverterFactory(gsonConverterFactory)
                 .build();
     }
@@ -60,6 +65,11 @@ public class RetroApiClient {
     @Provides
     public GsonConverterFactory gsonConverterFactory(Gson gson) {
         return GsonConverterFactory.create(gson);
+    }
+
+    @Provides
+    public RxJava2CallAdapterFactory getRxJava2CallAdapterFactory() {
+        return RxJava2CallAdapterFactory.create();
     }
 
 

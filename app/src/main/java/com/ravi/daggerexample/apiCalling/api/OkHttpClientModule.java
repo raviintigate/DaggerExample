@@ -1,4 +1,4 @@
-package com.ravi.daggerexample.api;
+package com.ravi.daggerexample.apiCalling.api;
 
 import java.util.concurrent.TimeUnit;
 

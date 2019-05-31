@@ -1,4 +1,4 @@
-package com.ravi.daggerexample.request;
+package com.ravi.daggerexample.model.request;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

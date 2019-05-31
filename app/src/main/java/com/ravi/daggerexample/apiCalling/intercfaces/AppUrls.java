@@ -1,4 +1,4 @@
-package com.ravi.daggerexample.intercfaces;
+package com.ravi.daggerexample.apiCalling.intercfaces;
 
 public interface AppUrls  {
 

@@ -1,10 +1,9 @@
-package com.ravi.daggerexample.api;
+package com.ravi.daggerexample.apiCalling.api;
 
-import com.ravi.daggerexample.request.UserAuthenticationRequest;
-import com.ravi.daggerexample.response.LoginResponse;
+import com.ravi.daggerexample.model.request.UserAuthenticationRequest;
+import com.ravi.daggerexample.model.response.LoginResponse;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
 import retrofit2.http.POST;

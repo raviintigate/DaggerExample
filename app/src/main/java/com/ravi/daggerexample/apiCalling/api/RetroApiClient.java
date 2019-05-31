@@ -1,8 +1,8 @@
-package com.ravi.daggerexample.api;
+package com.ravi.daggerexample.apiCalling.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ravi.daggerexample.intercfaces.AppUrls;
+import com.ravi.daggerexample.apiCalling.intercfaces.AppUrls;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
